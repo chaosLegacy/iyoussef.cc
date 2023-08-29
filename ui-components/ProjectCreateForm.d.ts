@@ -1,0 +1,60 @@
+/***************************************************************************
+ * The contents of this file were generated with Amplify Studio.           *
+ * Please refrain from making any modifications to this file.              *
+ * Any changes to this file will be overwritten when running amplify pull. *
+ **************************************************************************/
+
+import * as React from "react";
+import { GridProps, SelectFieldProps, SwitchFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+export declare type ValidationResponse = {
+    hasError: boolean;
+    errorMessage?: string;
+};
+export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
+export declare type ProjectCreateFormInputValues = {
+    name?: string;
+    coverImage?: string;
+    description?: string;
+    githubURL?: string;
+    previewURL?: string;
+    tools?: string[];
+    pinned?: boolean;
+    type?: string;
+    createdAt?: string;
+};
+export declare type ProjectCreateFormValidationValues = {
+    name?: ValidationFunction<string>;
+    coverImage?: ValidationFunction<string>;
+    description?: ValidationFunction<string>;
+    githubURL?: ValidationFunction<string>;
+    previewURL?: ValidationFunction<string>;
+    tools?: ValidationFunction<string>;
+    pinned?: ValidationFunction<boolean>;
+    type?: ValidationFunction<string>;
+    createdAt?: ValidationFunction<string>;
+};
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
+export declare type ProjectCreateFormOverridesProps = {
+    ProjectCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
+    name?: PrimitiveOverrideProps<TextFieldProps>;
+    coverImage?: PrimitiveOverrideProps<TextFieldProps>;
+    description?: PrimitiveOverrideProps<TextFieldProps>;
+    githubURL?: PrimitiveOverrideProps<TextFieldProps>;
+    previewURL?: PrimitiveOverrideProps<TextFieldProps>;
+    tools?: PrimitiveOverrideProps<TextFieldProps>;
+    pinned?: PrimitiveOverrideProps<SwitchFieldProps>;
+    type?: PrimitiveOverrideProps<SelectFieldProps>;
+    createdAt?: PrimitiveOverrideProps<TextFieldProps>;
+} & EscapeHatchProps;
+export declare type ProjectCreateFormProps = React.PropsWithChildren<{
+    overrides?: ProjectCreateFormOverridesProps | undefined | null;
+} & {
+    clearOnSuccess?: boolean;
+    onSubmit?: (fields: ProjectCreateFormInputValues) => ProjectCreateFormInputValues;
+    onSuccess?: (fields: ProjectCreateFormInputValues) => void;
+    onError?: (fields: ProjectCreateFormInputValues, errorMessage: string) => void;
+    onChange?: (fields: ProjectCreateFormInputValues) => ProjectCreateFormInputValues;
+    onValidate?: ProjectCreateFormValidationValues;
+} & React.CSSProperties>;
+export default function ProjectCreateForm(props: ProjectCreateFormProps): React.ReactElement;
