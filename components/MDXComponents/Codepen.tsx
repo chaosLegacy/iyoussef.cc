@@ -5,7 +5,7 @@ export default function Codepen({ id }: { id: string }) {
         height="600"
         style={{ marginTop: "10px" }}
         className="w-full"
-        src={`https://codepen.io/j471n/embed/${id}`}
+        src={`https://codepen.io/chaoslegacy/embed/${id}`}
         loading="lazy"
         allowFullScreen={true}
       ></iframe>

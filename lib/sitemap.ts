@@ -21,7 +21,7 @@ export default async function generate() {
           .map((route) => {
             return `
               <url>
-                  <loc>${`https://j471n.in${route}`}</loc>
+                  <loc>${`https://iyoussef.cc${route}`}</loc>
               </url>
             `;
           })

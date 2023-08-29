@@ -7,22 +7,22 @@ const socialMedia: SocialPlatform[] = [
   {
     title: "LinkedIn",
     Icon: BsLinkedin,
-    url: "https://www.linkedin.com/in/j471n/",
+    url: "https://www.linkedin.com/in/youssef.barnoukh/",
   },
   {
     title: "Github",
     Icon: BsGithub,
-    url: "https://github.com/j471n",
+    url: "https://github.com/chaoslegacy",
   },
   {
     title: "Instagram",
     Icon: AiOutlineInstagram,
-    url: "https://www.instagram.com/j471n_",
+    url: "https://www.instagram.com/chaoslegacu",
   },
   {
     title: "Mail",
     Icon: HiMail,
-    url: "mailto:me@j471n.in",
+    url: "mailto:youssef.barnoukh@gmail.com",
   },
 ];
 

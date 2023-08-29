@@ -13,6 +13,7 @@ import { BsThreeDots } from "react-icons/bs";
 import { FaWhatsapp } from "react-icons/fa";
 import { toast } from "react-toastify";
 import useShare from "../hooks/useShare";
+import { getAuthorData } from "@content/user";
 
 type Props = {
   className: string;
@@ -32,6 +33,7 @@ export default function ShareOnSocialMedia({
   children,
 }: Props) {
   const { isShareSupported } = useShare();
+  const { username } = getAuthorData();
 
   async function handleShare() {
     const blob = await fetch(cover_image).then((res) => res.blob());
@@ -80,7 +82,7 @@ export default function ShareOnSocialMedia({
             <GrFacebookOption className="w-4 h-4" />
           </div>
         </FacebookShareButton>
-        <TwitterShareButton title={title} url={url} related={["@j471n_"]}>
+        <TwitterShareButton title={title} url={url} related={[username]}>
           <div className="p-2 text-white bg-gray-700 rounded-full">
             <GrTwitter className="w-4 h-4" />
           </div>

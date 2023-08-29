@@ -2,6 +2,7 @@ import { homeProfileImage } from "@utils/utils";
 
 type AuthorInfo = {
   name: string;
+  username: string;
   image: string;
   org: string | null;
   org_logo: string | null;
@@ -14,6 +15,7 @@ export function getAuthorData(org: string | null = null): AuthorInfo {
     case "documatic":
       return {
         name: "Youssef BARNOUKH",
+        username: "",
         image: homeProfileImage,
         org: "Documatic",
         org_logo: "https://i.imgur.com/ZqBFtg1.png",
@@ -24,6 +26,7 @@ export function getAuthorData(org: string | null = null): AuthorInfo {
     default:
       return {
         name: "Youssef BARNOUKH",
+        username: "chaoslegacy",
         image: homeProfileImage,
         org: null,
         org_logo: null,

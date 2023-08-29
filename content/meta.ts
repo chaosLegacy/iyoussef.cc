@@ -1,14 +1,14 @@
 import { PageMeta } from "@lib/types";
 import { getAuthorData } from "./user";
 
-const {name, image } = getAuthorData();
+const {name, image, } = getAuthorData();
 const pageMeta: PageMeta = {
   home: {
     title: "",
     description:
       `Hey, I am ${name}. A Front-end Developer/React Developer from India who loves to design and code. I use React.js or Next.js to build the web application interfaces and the functionalities. At the moment, I am pursuing my Bachelor's degree in Computer Science.`,
     image,
-    keywords: "portfolio jatin, portfolio j471n, jatin blogs",
+    keywords: `portfolio, portfolio ${name}`,
   },
 
   stats: {
@@ -30,7 +30,7 @@ const pageMeta: PageMeta = {
     description:
       "I've been writing online since 2021, mostly about web development and tech careers. In total, I've written more than 50 articles till now.",
     image: "https://imgur.com/nbNLLZk.png",
-    keywords: "j471n blog, blog, webdev, react",
+    keywords: `${name} blog, blog, webdev, react`,
   },
 
   bookmark: {
@@ -63,7 +63,7 @@ const pageMeta: PageMeta = {
   privacy: {
     title: "Privacy Policy",
     description:
-      "Privacy is an important factor for everyone. Following is the privacy policies of j471n.in",
+      "Privacy is an important factor for everyone.",
     image: "https://imgur.com/ghlRutT.png",
     keywords: "Privacy, Privacy Policies, ",
   },
