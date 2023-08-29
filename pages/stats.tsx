@@ -1,17 +1,17 @@
 import { FadeContainer, opacityVariant } from "@content/FramerMotionVariants";
-import { SpotifyArtist, SpotifyTrack } from "@lib/types";
+// import { SpotifyArtist, SpotifyTrack } from "@lib/types";
 
 import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
 import AnimatedHeading from "../components/FramerMotion/AnimatedHeading";
 import AnimatedText from "../components/FramerMotion/AnimatedText";
-import Artist from "../components/Stats/Artist";
+// import Artist from "../components/Stats/Artist";
 import GitHubActivityGraph from "../components/GitHubActivityGraph";
 import GitHubCalendar from "react-github-calendar";
 import MetaData from "../components/MetaData";
 import PageTop from "../components/PageTop";
 import React from "react";
 import StatsCard from "../components/Stats/StatsCard";
-import Track from "../components/Stats/Track";
+// import Track from "../components/Stats/Track";
 import fetcher from "@lib/fetcher";
 import pageMeta from "@content/meta";
 import { useDarkMode } from "@context/darkModeContext";
@@ -25,9 +25,9 @@ type Stats = {
 export default function Stats() {
   const { isDarkMode } = useDarkMode();
 
-  const { data: topTracks } = useSWR("/api/stats/tracks", fetcher);
-  const { data: artists } = useSWR("/api/stats/artists", fetcher);
-  const { data: devto } = useSWR("/api/stats/devto", fetcher);
+  // const { data: topTracks } = useSWR("/api/stats/tracks", fetcher);
+  // const { data: artists } = useSWR("/api/stats/artists", fetcher);
+  // const { data: devto } = useSWR("/api/stats/devto", fetcher);
   const { data: github } = useSWR("/api/stats/github", fetcher);
 
   const stats: Stats[] = [
@@ -84,10 +84,7 @@ export default function Stats() {
 
       <section className="pageTop font-inter">
         <PageTop pageTitle="Statistics">
-          <p>
-            These are my personal statistics about my Dev.to Blogs, Github and
-            Top Streamed Music on Spotify.
-          </p>
+          <p>{pageMeta.stats.description}</p>
         </PageTop>
 
         {/* Blogs and github stats */}

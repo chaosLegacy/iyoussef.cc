@@ -1,32 +1,19 @@
 // Page Components START----------
 
 import {
-  FadeContainer,
   headingFromLeft,
-  opacityVariant,
-  popUp,
 } from "@content/FramerMotionVariants";
 
 import AnimatedHeading from "../components/FramerMotion/AnimatedHeading";
-import { BlogPost } from "@lib/interface/sanity";
-import BlogsSection from "../components/Home/BlogsSection";
 import Contact from "../components/Contact";
-import { FiDownload } from "react-icons/fi";
-import Image from "next/image";
-import Link from "next/link";
 import Metadata from "../components/MetaData";
 import React from "react";
 import SkillSection from "../components/Home/SkillSection";
-import generateSitemap from "@lib/sitemap";
-import { getAllPostsMeta } from "@lib/sanityContent";
-import getRSS from "@lib/generateRSS";
-import { homeProfileImage } from "@utils/utils";
-import { motion } from "framer-motion";
 import pageMeta from "@content/meta";
 import Hero from "@components/Home/Hero";
 import { getAuthorData } from "@content/user";
 
-export default function Home({ blogs }: { blogs: BlogPost[] }) {
+export default function Home() {
   const { name } = getAuthorData();
 
   return (

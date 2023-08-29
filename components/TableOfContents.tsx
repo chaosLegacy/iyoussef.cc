@@ -1,5 +1,5 @@
 import { FadeContainer, opacityVariant } from "@content/FramerMotionVariants";
-import { lockScroll, removeScrollLock } from "src/utils/functions";
+import { lockScroll, removeScrollLock } from "@utils/functions";
 import { useEffect, useState } from "react";
 
 import AnimatedDiv from "./FramerMotion/AnimatedDiv";

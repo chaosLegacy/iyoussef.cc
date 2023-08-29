@@ -1,4 +1,4 @@
-import { ListProjectsQuery, Project } from "API";
+import { ListProjectsQuery } from "API";
 import { API, graphqlOperation } from "aws-amplify";
 import { GraphQLResult } from '@aws-amplify/api';
 import { listProjects } from "graphql/queries";

@@ -10,7 +10,7 @@ import Newsletter from "../components/Newsletter";
 import ScrollProgressBar from "../components/ScrollProgressBar";
 import ShareOnSocialMedia from "../components/ShareOnSocialMedia";
 import TableOfContents from "../components/TableOfContents";
-import { getFormattedDate } from "src/utils/date";
+import { getFormattedDate } from "@utils/date";
 import { opacityVariant } from "@content/FramerMotionVariants";
 import useBookmarkBlogs from "@hooks/useBookmarkBlogs";
 import useWindowLocation from "@hooks/useWindowLocation";

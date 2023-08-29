@@ -15,7 +15,7 @@
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Content**: [MDX](https://github.com/mdx-js/mdx)
 
-- **Database**: [Supabase](https://supabase.com/)
+- **Amplify**: [Amplify](https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/#summary)
 - **Animations**: [Framer Motion](https://framer.com/motion)
 - **Deployment**: [Vercel](https://vercel.com)
 - **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
@@ -93,79 +93,9 @@ Rename [`.env.example`](/.env.example) to `.env.local` and then you need to popu
   - `GA_CLIENT_EMAIL`
   - `GA_PRIVATE_KEY`
     I have written a [blog](https://j471n.in/blogs/google-analytics-data-api) that shows how you can get these properties and guides to use them.
-- [**Supabase Integration**](https://supabase.com/): I am using Supabase with ISR to store all my projects and certificates for now. It provides an API that helps you to access the data. To access that data you need two things:
 
-  - `SUPABASE_URL`: Database URL.
-  - `SUPABASE_KEY`: It is safe to be used in a browser context.
 
-  **Steps-**
 
-  - To get these go to [Supabase](https://app.supabase.com/sign-in) and log in with your account.
-
-  - Click on **New Project** and fill all the fields.
-
-  - Click on **Create New Project**.
-
-  - Go to the [Settings](https://app.supabase.com/project/_/settings/general) page in the Dashboard.
-
-  - Click **API** in the sidebar.
-
-  - Find your API **URL** and **anon** key on this page.
-
-  - Now you can [Create table](https://app.supabase.com/project/_/editor) and start using it.
-
-    But before you use this there was one issue I had when I was using this it was returning the empty array ([]). It was because of project policies. By default, no-one has access to the data. To fix that you can do the following:
-
-  - Go to [Policies](https://app.supabase.com/project/_/auth/policies).
-
-  - Select your Project.
-
-  - Click on **New Policy**.
-
-    ![](https://i.imgur.com/RsGd8oW.png)
-
-  - You will be presented with two options. You can choose either one. I chose the 1st option:
-
-    ![](https://i.imgur.com/QDAePUQ.png)
-
-  - After that, you will have four options as shown in the following image. You can choose according to your need. I only need the read access so I went with 1st option.
-
-    ![](https://i.imgur.com/h1hSivF.png)
-
-  - Click on **Use this template**.
-
-  - Click on **Review**.
-
-  - Click on **Save Policy**
-
-    After that, you will be able to access the data using [@supabase/supabase-js](https://www.npmjs.com/package/@supabase/supabase-js). Install it and you just set up your project with Supabase.
-
-- `REVALIDATE_SECRET`: As I am using [Supabase](https://supabase.com/), It has a feature called [webhooks](https://supabase.com/docs/guides/database/webhooks) which allow you to send real-time data from your database to another system whenever a table event occurs. So I am using it to revalidate my `projects` and `certificates` page. For that I am providing a custom secret value to verify that request is coming from authenticated source. Let's create webhook:
-
-  - Go to [webhooks](https://app.supabase.com/project/_/database/hooks) page.
-  - Click on **Create a new hook**
-  - Enter the name of the function hook (example: `update_projects`)
-
-    ![](https://i.imgur.com/QAYIkKZ.png)
-
-  - Choose your table from the dropdown list
-
-    ![](https://i.imgur.com/Hspecbe.png)
-
-  - Select events which will trigger this function hook
-
-    ![](https://i.imgur.com/OYq1qcg.png)
-
-  - Now Choose POST method and enter the revalidate URL (request will be sent to this URL)
-
-    ![](https://i.imgur.com/lpicIsR.png)
-
-  - Then add two HTTP Params `secret` and `revalidateUrl`
-
-  ![](https://i.imgur.com/Mw1Ia0o.png)
-
-  - Now add this secret to your `env.local` and it will update the page when you made some changes to your supabase database.
-  - `pages/api/revalidate.ts` is using `revalidateUrl` to update the page with new data.
 
 - `GITHUB_TOKEN`: Follow these steps to generate a GitHub token that I am using fetch my GitHub details:
 
@@ -203,17 +133,6 @@ Rename [`.env.example`](/.env.example) to `.env.local` and then you need to popu
     ![Rapid API-1](https://imgur.com/OMFF69O.png)
 
   - Then you'll get the `API_KEY`, which you can store in your `.env.local`.
-
-    ![Rapid API-2](https://imgur.com/REdKVsX.png)
-- `SANITY_PROJECT_ID`: 
-  - Go to the [Sanity.io]((https://www.sanity.io/) ) website using your web browser.
-  - Login with you account/Create a new account.
-  - After logging in, you'll be redirected to the Sanity.io dashboard.
-  - If you have an existing project, you'll see it listed on the dashboard. Click on the project's name to access it.
-  - Once you're inside the project, look at the browser's address bar. The URL should look something like this: `https://www.sanity.io/manage/project/your-project-id`
-  - The your-project-id in the URL is your Sanity project ID. It's a unique identifier for your specific project.
-  
-  That's it! You've now obtained your Sanity project ID, which you can use for interacting with your Sanity project via its API or other integrations.
 
 - `TMDB_ACCOUNT_ID` and `TMDB_ACCESS_TOKEN`: To enable seamless integration of movie and TV show data, we will use the TMDB API, which offers comprehensive information about media content. The following steps will guide you:
 

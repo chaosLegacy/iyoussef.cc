@@ -1,5 +1,4 @@
 import { ReadTimeResults } from "reading-time";
-import { SanityDocument } from "@sanity/types";
 import { TableOfContents as TableOfContentsType } from "@lib/types";
 
 export interface ISanityImage {
@@ -9,7 +8,7 @@ export interface ISanityImage {
     url: "string";
   };
 }
-export interface BlogPost extends SanityDocument {
+export interface BlogPost{
   _id: string;
   title: string;
   slug: {
@@ -34,7 +33,7 @@ export interface BlogPost extends SanityDocument {
   tableOfContents: TableOfContentsType[];
 }
 
-export interface ISnippet extends SanityDocument {
+export interface ISnippet{
   _id: string;
   title: string;
   slug: {
@@ -54,7 +53,7 @@ export interface ISnippet extends SanityDocument {
   }[];
 }
 
-export interface IStaticPage extends SanityDocument {
+export interface IStaticPage{
   _id: string;
   title: string;
   slug: {

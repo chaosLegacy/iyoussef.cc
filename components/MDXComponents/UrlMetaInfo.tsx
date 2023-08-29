@@ -53,6 +53,7 @@ function UrlMetaInfo({ url }: UrlMetaInfoProps) {
     };
 
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
 
   if (!metaData) {

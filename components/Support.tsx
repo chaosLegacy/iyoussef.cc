@@ -13,7 +13,7 @@ import QRCode from "react-qr-code";
 import { BiRupee } from "react-icons/bi";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { FiInfo } from "react-icons/fi";
-import { lockScroll, removeScrollLock } from "src/utils/functions";
+import { lockScroll, removeScrollLock } from "@utils/functions";
 import AnimatedDiv from "./FramerMotion/AnimatedDiv";
 
 export default function Support() {

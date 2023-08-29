@@ -1,19 +1,15 @@
 import Link from "next/link";
-import Image from "next/image";
 import socialMedia from "@content/socialMedia";
 import {
   FadeContainer,
   opacityVariant,
   popUp,
 } from "../content/FramerMotionVariants";
-import { navigationRoutes } from "../utils/utils";
 import { motion } from "framer-motion";
-import { SiSpotify } from "react-icons/si";
 import useSWR from "swr";
 import fetcher from "../lib/fetcher";
 import { HiOutlineQrcode } from "react-icons/hi";
 import { BsDot } from "react-icons/bs";
-import { Song } from "@lib/types";
 import { SocialIcon } from "react-social-icons";
 import supportOptions from "@content/support";
 
@@ -24,7 +20,7 @@ export default function Footer({
   setShowQR: (value: boolean) => void;
   showQR: boolean;
 }) {
-  const { data: currentSong } = useSWR("/api/now-playing", fetcher);
+  // const { data: currentSong } = useSWR("/api/now-playing", fetcher);
   const { data: visitors } = useSWR("/api/ga", fetcher);
 
   return (
@@ -139,18 +135,18 @@ export default function Footer({
   );
 }
 
-function FooterLink({ route, text }: { route: string; text: string }) {
-  return (
-    <Link href={`/${route}`}>
-      <motion.p
-        className="hover:text-black dark:hover:text-white w-fit"
-        variants={popUp}
-      >
-        {text}
-      </motion.p>
-    </Link>
-  );
-}
+// function FooterLink({ route, text }: { route: string; text: string }) {
+//   return (
+//     <Link href={`/${route}`}>
+//       <motion.p
+//         className="hover:text-black dark:hover:text-white w-fit"
+//         variants={popUp}
+//       >
+//         {text}
+//       </motion.p>
+//     </Link>
+//   );
+// }
 
 // function NotPlaying() {
 //   return (

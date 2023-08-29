@@ -6,9 +6,8 @@ import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
 import PageTop from "../components/PageTop";
 import pageMeta from "@content/meta";
 import { CertificateType } from "@lib/types";
-import { getCertificates } from "@lib/supabase";
 import CreateAnIssue from "../components/CreateAnIssue";
-import { getFormattedDate } from "src/utils/date";
+import { getFormattedDate } from "@utils/date";
 
 export default function Certificates({
   certificates,
@@ -81,11 +80,11 @@ export default function Certificates({
 }
 
 export async function getStaticProps() {
-  const { certificates, error } = await getCertificates();
+  // const { certificates, error } = await getCertificates();
   return {
     props: {
-      certificates,
-      error,
+      certificates: [],
+      error: false,
     },
   };
 }

@@ -14,7 +14,7 @@ const pageMeta: PageMeta = {
   stats: {
     title: "Statistics",
     description:
-      "These are my personal statistics about me. It includes My Blogs and github Stats and top music stats.",
+      "These are my personal statistics about me. It contains My github Stats.",
     image: "https://imgur.com/9scFfW5.png",
     keywords: "stats, Statistics",
   },
