@@ -34,4 +34,14 @@ module.exports = withPWA({
   typescript: {
     ignoreBuildErrors: false,
   },
+  env: {
+    NEXT_PUBLIC_YOUR_SERVICE_ID: process.env.NEXT_PUBLIC_YOUR_SERVICE_ID,
+    NEXT_PUBLIC_YOUR_TEMPLATE_ID: process.env.NEXT_PUBLIC_YOUR_TEMPLATE_ID,
+    NEXT_PUBLIC_YOUR_USER_ID: process.env.NEXT_PUBLIC_YOUR_USER_ID,
+    NEXT_PUBLIC_GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
+    GA_PROPERTY_ID: process.env.GA_PROPERTY_ID,
+    GA_CLIENT_EMAIL: process.env.GA_CLIENT_EMAIL,
+    GA_PRIVATE_KEY: process.env.GA_PRIVATE_KEY,
+    GITHUB_TOKEN: process.env.GITHUB_TOKEN
+  }
 });
