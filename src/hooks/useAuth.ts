@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, User, UserInfo } from 'firebase/auth';
 import { useState, useEffect } from 'react'
-import { FIREBASE_AUTH } from 'utils/firebase';
+import { FIREBASE_AUTH } from '@utils/firebase';
 import { useUser } from './useUser';
 
 const formatAuthUser = (user: UserInfo) => ({

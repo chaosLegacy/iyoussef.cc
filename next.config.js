@@ -20,6 +20,7 @@ module.exports = withPWA({
   images: {
     domains: [
       'lh3.googleusercontent.com',
+      'imgur.com',
       'images.unsplash.com',
       'i.ibb.co',
       'scontent.fotp8-1.fna.fbcdn.net',

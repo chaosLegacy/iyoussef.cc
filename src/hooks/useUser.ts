@@ -1,7 +1,7 @@
-import { Collection } from 'lib/constants';
+import { Collection } from '@lib/constants';
 import { collection, doc, getDocs, setDoc, updateDoc, deleteDoc, getDoc } from 'firebase/firestore';
 import { SetStateAction, useEffect, useState } from 'react';
-import { FIRESTORE_DB } from 'utils/firebase';
+import { FIRESTORE_DB } from '@utils/firebase';
 
 export const useUser = (uid?: string) => {
     const [users, setUsers] = useState([]);

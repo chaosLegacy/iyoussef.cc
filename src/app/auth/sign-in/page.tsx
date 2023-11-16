@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // Chakra imports
 import {
   Box,
@@ -11,7 +11,6 @@ import {
   FormLabel,
   FormErrorMessage,
   Heading,
-  Icon,
   Input,
   InputGroup,
   InputRightElement,
@@ -33,23 +32,24 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@contexts/AuthUserProvider';
 import { Handler } from '@lib/types';
 
+import dynamic from 'next/dynamic'
+const Icon = dynamic(() => import('@chakra-ui/react').then((chakra) => chakra.Icon), {
+  ssr: false,
+});
+
 export default function SignIn() {
   // Chakra color mode
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
   const textColor = useColorModeValue('brand.900', 'white');
   const textColorSecondary = 'gray.400';
   const router = useRouter();
 
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
-
-  const handleSignInWithGoogle = async () => {
-    try {
-      await onSignInWithGoogle();
-      router.push("/admin/default");
-    } catch (err) {
-      console.log('onSignInWithGoogle error: ', err);
-    }
-  }
 
   const { onSignInWithEmailAndPassword, onSignInWithGoogle} = useAuth();
 
@@ -59,134 +59,135 @@ export default function SignIn() {
   });
 
 
-
-  return (
-    <DefaultAuthLayout illustrationBackground={'/img/auth/auth.png'}>
-      <Formik
-        initialValues={{ email: '', password: '' }}
-        validationSchema={SigningSchema}
-        onSubmit={async (values, actions) => {
-          console.log(values);
-          try {
-            await onSignInWithEmailAndPassword(
-              values.email,
-              values.password,
-            );
-            actions.setSubmitting(false);
-            router.push("/admin/default");
-          } catch (error) {
-            console.log(error);
-            actions.setSubmitting(false);
-          }
-        }}
-      >
-        {({ errors, touched, handleSubmit, handleChange, values, isSubmitting }) => (
-          <Form>
-            <Flex
-              maxW={{ base: '100%', md: 'max-content' }}
-              w="100%"
-              mx={{ base: 'auto', lg: '0px' }}
-              me="auto"
-              h="100%"
-              alignItems="start"
-              justifyContent="center"
-              mb={{ base: '30px', md: '60px' }}
-              px={{ base: '25px', md: '0px' }}
-              mt={{ base: '40px', md: '14vh' }}
-              flexDirection="column"
-            >
-              <Box me="auto">
-                <Heading color={textColor} fontSize="36px" mb="10px">
-                  Sign In
-                </Heading>
-                <Text
-                  mb="36px"
-                  ms="4px"
-                  color={textColorSecondary}
-                  fontWeight="400"
-                  fontSize="md"
-                >
-                  Enter your email and password to sign in!
-                </Text>
-              </Box>
+  if (isClient) {
+    return (
+      <DefaultAuthLayout illustrationBackground={'/img/auth/auth.png'}>
+        <Formik
+          initialValues={{ email: '', password: '' }}
+          validationSchema={SigningSchema}
+          onSubmit={async (values, actions) => {
+            console.log(values);
+            try {
+              await onSignInWithEmailAndPassword(
+                values.email,
+                values.password,
+              );
+              actions.setSubmitting(false);
+              router.push("/admin/default");
+            } catch (error) {
+              console.log(error);
+              actions.setSubmitting(false);
+            }
+          }}
+        >
+          {({ errors, touched, handleSubmit, handleChange, values, isSubmitting }) => (
+            <Form>
               <Flex
-                zIndex="2"
-                direction="column"
-                w={{ base: '100%', md: '420px' }}
-                maxW="100%"
-                background="transparent"
-                borderRadius="15px"
-                mx={{ base: 'auto', lg: 'unset' }}
+                maxW={{ base: '100%', md: 'max-content' }}
+                w="100%"
+                mx={{ base: 'auto', lg: '0px' }}
                 me="auto"
-                mb={{ base: '20px', md: 'auto' }}
+                h="100%"
+                alignItems="start"
+                justifyContent="center"
+                mb={{ base: '30px', md: '60px' }}
+                px={{ base: '25px', md: '0px' }}
+                mt={{ base: '40px', md: '14vh' }}
+                flexDirection="column"
               >
-    
-
-                <FormControl isRequired isInvalid={errors.email && touched.email}>
-                  <FormLabel
-                    display="flex"
+                <Box me="auto">
+                  <Heading color={textColor} fontSize="36px" mb="10px">
+                    Sign In
+                  </Heading>
+                  <Text
+                    mb="36px"
                     ms="4px"
-                    fontSize="sm"
-                    fontWeight="500"
-                    color={errors.email ? 'red' : textColor}
-                    mb="8px"
+                    color={textColorSecondary}
+                    fontWeight="400"
+                    fontSize="md"
                   >
-                    Email
-                  </FormLabel>
-
-                  <Input
-                    borderColor={errors.email ? 'red' : 'inherit'}
-                    value={values.email}
-                    onChange={handleChange('email')}
-                    isRequired={true}
-                    variant="auth"
-                    fontSize="sm"
-                    ms={{ base: '0px', md: '0px' }}
-                    type="email"
-                    placeholder="mail@simmmple.com"
-                    fontWeight="500"
-                    size="lg"
-                  />
-                  <FormErrorMessage>{errors.email}</FormErrorMessage>
-                </FormControl>
+                    Enter your email and password to sign in!
+                  </Text>
+                </Box>
+                <Flex
+                  zIndex="2"
+                  direction="column"
+                  w={{ base: '100%', md: '420px' }}
+                  maxW="100%"
+                  background="transparent"
+                  borderRadius="15px"
+                  mx={{ base: 'auto', lg: 'unset' }}
+                  me="auto"
+                  mb={{ base: '20px', md: 'auto' }}
+                >
 
 
-
-                <FormControl mt="24px" isRequired isInvalid={errors.password && touched.password}>
-                  <FormLabel
-                    ms="4px"
-                    fontSize="sm"
-                    fontWeight="500"
-                    color={errors.password ? 'red' : textColor}
-                    display="flex"
-                  >
-                    Password
-                  </FormLabel>
-                  <InputGroup size="md">
-                    <Input
-                      borderColor={errors.password ? 'red' : 'inherit'}
-                      value={values.password}
-                      onChange={handleChange('password')}
-                      isRequired={true}
+                  <FormControl isRequired isInvalid={errors.email && touched.email}>
+                    <FormLabel
+                      display="flex"
+                      ms="4px"
                       fontSize="sm"
-                      placeholder="Min. 8 characters"
+                      fontWeight="500"
+                      color={errors.email ? 'red' : textColor}
+                      mb="8px"
+                    >
+                      Email
+                    </FormLabel>
 
-                      size="lg"
-                      type={show ? 'text' : 'password'}
+                    <Input
+                      borderColor={errors.email ? 'red' : 'inherit'}
+                      value={values.email}
+                      onChange={handleChange('email')}
+                      isRequired={true}
                       variant="auth"
+                      fontSize="sm"
+                      ms={{ base: '0px', md: '0px' }}
+                      type="email"
+                      placeholder="mail@simmmple.com"
+                      fontWeight="500"
+                      size="lg"
                     />
-                    <InputRightElement display="flex" alignItems="center" mt="4px">
-                      <Icon
-                        color={textColorSecondary}
-                        _hover={{ cursor: 'pointer' }}
-                        as={show ? RiEyeCloseLine : MdOutlineRemoveRedEye}
-                        onClick={handleClick}
+                    <FormErrorMessage>{errors.email}</FormErrorMessage>
+                  </FormControl>
+
+
+
+                  <FormControl mt="24px" isRequired isInvalid={errors.password && touched.password}>
+                    <FormLabel
+                      display="flex"
+                      ms="4px"
+                      fontSize="sm"
+                      fontWeight="500"
+                      color={errors.password ? 'red' : textColor}
+                      mb="8px"
+                    >
+                      Password
+                    </FormLabel>
+                    <InputGroup size="md">
+                      <Input
+                        borderColor={errors.password ? 'red' : 'inherit'}
+                        value={values.password}
+                        onChange={handleChange('password')}
+                        isRequired={true}
+                        variant="auth"
+                        fontSize="sm"
+                        ms={{ base: '0px', md: '0px' }}
+                        placeholder="Min. 8 characters"
+                        size="lg"
+                        type={show ? 'text' : 'password'}
                       />
-                    </InputRightElement>
-                  </InputGroup>
-                  <FormErrorMessage>{errors.password}</FormErrorMessage>
-                </FormControl>
-                <Flex justifyContent="space-between" align="center" mt="24px" mb="24px">
+                      <InputRightElement display="flex" alignItems="center" mt="4px">
+                        <Icon
+                          color={textColorSecondary}
+                          _hover={{ cursor: 'pointer' }}
+                          as={show ? RiEyeCloseLine : MdOutlineRemoveRedEye}
+                          onClick={handleClick}
+                        />
+                      </InputRightElement>
+                    </InputGroup>
+                    <FormErrorMessage>{errors.password}</FormErrorMessage>
+                  </FormControl>
+                  <Flex justifyContent="space-between" align="center" mt="24px" mb="24px">
                   <FormControl display="flex" alignItems="center">
                     <Checkbox
                       id="remember-login"
@@ -218,11 +219,13 @@ export default function SignIn() {
                 >
                   Sign In
                 </Button>
+                </Flex>
               </Flex>
-            </Flex>
-          </Form>
-        )}
-      </Formik>
-    </DefaultAuthLayout>
-  );
+            </Form>
+          )}
+        </Formik>
+      </DefaultAuthLayout>
+    );
+}
+
 }

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { useAuth } from 'contexts/AuthUserProvider';
-import { useRouter } from 'next/navigation';
+import { useAuth } from '@contexts/AuthUserProvider';
 import { Flex, Spinner } from '@chakra-ui/react';
 import { redirect } from 'next/navigation';
 
@@ -11,12 +10,6 @@ interface protectorProps {
 
 const Protector = (props: protectorProps) => {
   const { authUser, loading } = useAuth();
-  // const router = useRouter();
-
-  // useEffect(() => {
-  //   if (!loading && !authUser)
-  //     router.replace('/auth/sign-in')
-  // }, [authUser, loading])
 
   if (loading) {
     return <Flex alignItems='center' justifyItems='center' w={'100%'} h={'100%'}><Spinner /></Flex>

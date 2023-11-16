@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from 'react-query';
-import { Collection } from 'lib/constants';
-import { useApp, useAuth } from 'contexts/AuthUserProvider';
-import { AddLeadDto } from 'lib/types/Lead';
-import { addLead } from 'services/leadService';
+import { Collection } from '@lib/constants';
+import { useApp, useAuth } from '@contexts/AuthUserProvider';
+import { AddLeadDto } from '@lib/types/Lead';
+import { addLead } from '@services/leadService';
 import { useToast } from '@chakra-ui/react';
-import { FetchErrorType } from 'lib/types';
+import { FetchErrorType } from '@lib/types';
 
 type AddLeadMutationArgs = {
   data: AddLeadDto;

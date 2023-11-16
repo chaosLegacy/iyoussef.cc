@@ -1,9 +1,9 @@
 import { useToast } from '@chakra-ui/react';
-import { Collection } from 'lib/constants';
-import { FetchErrorType } from 'lib/types';
-import { DisableLeadDto } from 'lib/types/Lead';
+import { Collection } from '@lib/constants';
+import { FetchErrorType } from '@lib/types';
+import { DisableLeadDto } from '@lib/types/Lead';
 import { useMutation, useQueryClient } from 'react-query';
-import { disableLead } from 'services/leadService';
+import { disableLead } from '@services/leadService';
 
 type DisableLeadMutationArgs = {
   data: DisableLeadDto;

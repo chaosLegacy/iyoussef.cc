@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from 'react-query';
-import { Collection } from 'lib/constants';
-import { DeleteLeadDto } from 'lib/types/Lead';
-import { deleteLead } from 'services/leadService';
+import { Collection } from '@lib/constants';
+import { DeleteLeadDto } from '@lib/types/Lead';
+import { deleteLead } from '@services/leadService';
 import { useToast } from '@chakra-ui/react';
-import { FetchErrorType } from 'lib/types';
+import { FetchErrorType } from '@lib/types';
 
 type DeleteLeadMutationArgs = {
   data: DeleteLeadDto;

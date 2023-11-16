@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query';
-import { Collection } from 'lib/constants';
-import { useApp } from 'contexts/AuthUserProvider';
-import { FetchErrorType } from 'lib/types';
+import { Collection } from '@lib/constants';
+import { useApp } from '@contexts/AuthUserProvider';
+import { FetchErrorType } from '@lib/types';
 import { useToast } from '@chakra-ui/react';
-import { ListLeads } from 'services/leadService';
+import { ListLeads } from '@services/leadService';
 
 export const useListLeadsQuery = () => {
   const toast = useToast();

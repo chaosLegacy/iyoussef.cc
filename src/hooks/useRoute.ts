@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { IRoute } from 'types/navigation';
+import { IRoute } from '@types/navigation';
 import { usePathname } from 'next/navigation';
-import { useApp } from 'contexts/AuthUserProvider';
+import { useApp } from '@contexts/AuthUserProvider';
 
-export const useActiveRouteInfo = (routes: IRoute[]) => {
+export const useActiveRouteInfo = (routes?: IRoute[]) => {
   const { name } = useApp();
   const pathname = usePathname();
   const [activeRoute, setActiveRoute] = useState(name);
@@ -12,7 +12,7 @@ export const useActiveRouteInfo = (routes: IRoute[]) => {
   const [routePath, setRoutePath] = useState<string>('');
 
   useEffect(() => {
-    const route = routes.find(
+    const route = routes?.find(
       (route) => pathname.indexOf(route.layout + route.path) !== -1 && route,
     );
     setActiveRoute(route?.name || name);
